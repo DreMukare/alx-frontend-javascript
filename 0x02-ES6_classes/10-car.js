@@ -13,7 +13,7 @@ export default class Car {
     this._color = color;
   }
 
-  cloneCar() {
-    return Symbol.species;
+  cloneCar () {
+    return this;
   }
 }
