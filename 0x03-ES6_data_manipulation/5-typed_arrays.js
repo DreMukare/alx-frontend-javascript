@@ -1,9 +1,16 @@
 export default function createInt8TypedArray(length, position, value) {
   if (typeof length !== 'number' || typeof position !== 'number' || typeof value !== 'number') {
-    throw new Error('Position outside range');
+    throw new TypeError('Parameters must be of type number');
   }
+
   const buffer = new ArrayBuffer(length);
   const int8View = new Int8Array(buffer);
-  int8View[position] = value;
+
+  try {
+    int8View[position] = value;
+  } catch (error) {
+    throw new Error('Position outside range');
+  }
+
   return new DataView(buffer);
 }
