@@ -4,17 +4,20 @@ export default function cleanSet(set, startString) {
   } else if (typeof startString !== 'string') {
     throw new TypeError('startString must be a string');
   }
-  if (!startString) return '';
-  const arrayFromSet = Array.from(set);
+
+  if (!startString || startString === '') return '';
+
   let output = '';
-  for (let i = 0; i < arrayFromSet.length; i++) {
-    if (arrayFromSet[i].includes(startString)) {
+
+  set.forEach((value) => {
+    if (value.includes(startString)) {
       if (output === '') {
-        output += arrayFromSet[i].replace(startString, '');
+        output += value.replace(startString, '');
       } else {
-        output += `-${arrayFromSet[i].replace(startString, '')}`;
+        output += `-${value.replace(startString, '')}`;
       }
     }
-  }
+  });
+
   return output;
 }
