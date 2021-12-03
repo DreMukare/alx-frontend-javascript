@@ -1,5 +1,4 @@
-/// <reference lib='crud' />
-//NEED TO READ UP ON TRIPLE SLASH FROM YOUTUBE
+/// <reference types='crud' />
 import { RowID, RowElement } from './interface.ts';
 import * as CRUD from './crud.js';
 
